@@ -1,0 +1,79 @@
+spring:
+  profiles:
+    active: h2
+#    active: mysql
+
+server:
+  port: 8443  # HTTPS 포트 설정
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password: 902400
+    key-store-type: PKCS12
+
+
+jwt:
+  secret: JA3xQsWEBPmA/5Djg3icpvnx0tRxX03XSl7u3nldVHg=
+  access_expiration_time: 3600 # 초 단위
+  refresh_expiration_time: 1209600 # 2주
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: h2
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/workout;
+    username: hs
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+        default_batch_fetch_size: 50
+
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    workout.aop: INFO
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/workout?useSSL=false&rewriteBatchedStatements=true
+#    url: jdbc:mysql://localhost:3306/workout?useSSL=false&rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=999999
+    username: root
+    password: 9024
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+        default_batch_fetch_size: 50
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    workout.aop: INFO
