@@ -21,7 +21,7 @@ public class ExerciseResponseDto {
 
     public ExerciseResponseDto(Exercise exercise) {
         this.exerciseId = exercise.getId();
-        this.exerciseName = exercise.getExerciseType().getName(); // 지연 로딩
+        this.exerciseName = exercise.getExerciseType().getName();
         this.startTime = exercise.getStartTime();
         this.endTime = exercise.getEndTime();
         this.targetCount = exercise.getTargetCount();
