@@ -4,7 +4,7 @@ spring:
 #    active: mysql
 
 server:
-  port: 8443  # HTTPS 포트 설정
+  port: 8443
   ssl:
     enabled: true
     key-store: classpath:keystore.p12
@@ -14,8 +14,8 @@ server:
 
 jwt:
   secret: JA3xQsWEBPmA/5Djg3icpvnx0tRxX03XSl7u3nldVHg=
-  access_expiration_time: 3600 # 초 단위
-  refresh_expiration_time: 1209600 # 2주
+  access_expiration_time: 3600
+  refresh_expiration_time: 1209600
 
 ---
 
