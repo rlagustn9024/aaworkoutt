@@ -15,9 +15,9 @@ import static org.springframework.data.web.config.EnableSpringDataWebSupport.Pag
 
 @SpringBootApplication
 @EnableJpaAuditing
-@EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO) // 이 어노테이션 쓰면 페이징 할 때 안정적인 JSON 구조 제공
-@EnableScheduling // 스케쥴링 기능 활성화
-@EnableAspectJAutoProxy // AOP 설정 활성화
+@EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO)
+@EnableScheduling
+@EnableAspectJAutoProxy
 public class OneApplication {
 
 	@Bean
